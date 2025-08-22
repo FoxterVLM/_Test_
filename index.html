@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="light-theme">
+    <div class="wrapper__switch">
+      <button class="switch-theme"></button>
+      <select id="switch-lang">
+        <option value="uk">UA</option>
+        <option value="en">EN</option>
+      </select>
+    </div>
+    <div class="wrapper">
+      <div class="wrapper__container">
+        <form class="container__form">
+          <!-- name -->
+          <div class="form__group">
+            <label for="group__name" class="group__name">Введіть ім'я</label>
+            <input type="text" id="group__name" />
+            <span class="group__error" id="name__error"></span>
+          </div>
+          <!-- firstName -->
+          <div class="form__group">
+            <label for="group__firstName" class="group__firstName"
+              >Введіть прізвище</label
+            >
+            <input type="text" id="group__firstName" />
+            <span class="group__error" id="firstName__error"></span>
+          </div>
+          <!-- email -->
+          <div class="form__group">
+            <label for="group__email" class="group__email"
+              >Введіть електронну пошту</label
+            >
+            <input type="email" id="group__email" />
+            <span class="group__error" id="email__error"></span>
+          </div>
+          <!-- password -->
+          <div class="form__group">
+            <label for="group__password" class="group__password"
+              >Введіть пароль</label
+            >
+            <input type="password" id="group__password" />
+            <span class="group__error" id="password__error"></span>
+          </div>
+          <!-- confirm password -->
+          <div class="form__group">
+            <label for="group__confirmPassword" class="group__confirmPassword"
+              >Підтвердіть пароль</label
+            >
+            <input type="password" id="group__confirmPassword" />
+            <span class="group__error" id="confirmPassword__error"></span>
+          </div>
+
+          <!-- send button -->
+          <button class="group__send-btn" type="button">Надіслати</button>
+        </form>
+      </div>
+    </div>
+    <script src="scripts/theme.js"></script>
+    <script src="scripts/validate.js"></script>
+    <script src="scripts/lang.js"></script>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>

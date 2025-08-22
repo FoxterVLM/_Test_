@@ -22,7 +22,7 @@ errorArray.push(confirmError)
 errorArray.push(eError)
 errorArray.push(pError)
 
-let inputed = [false, false, false, false, false]
+let inputed = [false, false, false, false, false] 
 
 // name
 nameI.addEventListener('input', () => {

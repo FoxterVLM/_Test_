@@ -22,6 +22,8 @@ errorArray.push(confirmError)
 errorArray.push(eError)
 errorArray.push(pError)
 
+
+
 // name
 nameI.addEventListener('input', () => {
     const error = document.getElementById('name__error')
@@ -43,7 +45,7 @@ nameI.addEventListener('input', () => {
 firstNameI.addEventListener('input', () => {
     const error = document.getElementById('firstName__error')
 
-    let Text1 = firstNameI.value.trim
+    let Text1 = firstNameI.value
 
     if(!firstNameI.value){
         error.style.display = 'block'
@@ -113,6 +115,8 @@ confirmPasswordI.addEventListener('input', () => {
     }
 })
 
+let counter = 0
+
 sendBtn.addEventListener('click', () => {
     // name
     const nameError = document.getElementById('name__error')
@@ -163,4 +167,17 @@ sendBtn.addEventListener('click', () => {
     else{
         confirmPasswordError.style.display = 'none'
     }
+
+    counter++
+    if(counter > 1){
+        const errorsIsStart = document.querySelectorAll('.group__error')
+        const errorsIs = Array.from(errorsIsStart)
+        let is = errorsIs.some(r => r.style.display === 'block')
+        console.log(is)
+        if(!is){
+            sendBtn.type = 'submit'
+        }
+    }
+    
 })
+document.addEventListener('DOMContentLoaded', () => counter = 0)

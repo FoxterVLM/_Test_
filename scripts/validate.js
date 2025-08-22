@@ -22,7 +22,7 @@ errorArray.push(confirmError)
 errorArray.push(eError)
 errorArray.push(pError)
 
-
+let inputed = [false, false, false, false, false]
 
 // name
 nameI.addEventListener('input', () => {
@@ -33,12 +33,17 @@ nameI.addEventListener('input', () => {
     if(!nameI.value){
         error.style.display = 'block'
         error.textContent = errorArray[0]
+        nameI.style.borderColor = 'red'
     }else if(nameText.length < 3){
         error.style.display = 'block'
         error.textContent = `${errorArray[1]} 3`
+        nameI.style.borderColor = 'red'
     }else{
         error.style.display = 'none'
+        nameI.style.border = '2px solid green'
+        setTimeout(() => {nameI.style.border = '1px solid #111'}, 7000)
     }
+    inputed[0] = true
 })
 
 // firstName
@@ -46,16 +51,20 @@ firstNameI.addEventListener('input', () => {
     const error = document.getElementById('firstName__error')
 
     let Text1 = firstNameI.value
-
     if(!firstNameI.value){
         error.style.display = 'block'
         error.textContent = errorArray[0]
+        firstNameI.style.borderColor = 'red'
     }else if(Text1.length < 3){
         error.style.display = 'block'
         error.textContent = `${errorArray[1]} 3`
+        firstNameI.style.borderColor = 'red'
     }else{
         error.style.display = 'none'
+        firstNameI.style.border = '2px solid green'
+        setTimeout(() => {firstNameI.style.border = '1px solid #111'}, 7000)
     }
+    inputed[1] = true
 })
 
 // email
@@ -68,13 +77,18 @@ emailI.addEventListener('input', () => {
     if(!emailI.value){
         error.style.display = 'block'
         error.textContent = errorArray[0]
+        emailI.style.borderColor = 'red'
     }else if(!emailRegex.test(Text1))
     {
         error.style.display = 'block'
         error.textContent = errorArray[3]
+        emailI.style.borderColor = 'red'
     }else{
         error.style.display = 'none'
+        emailI.style.border = '2px solid green'
+        setTimeout(() => {emailI.style.border = '1px solid #111'}, 7000)
     }
+    inputed[2] = true
 })
 
 // password
@@ -87,13 +101,18 @@ passwordI.addEventListener('input', () => {
     if(!passwordI.value){
         error.style.display = 'block'
         error.textContent = errorArray[0]
+        passwordI.style.borderColor = 'red'
     }else if(!passwordRegex.test(Text1)){
         error.style.display = 'block'
         error.textContent = errorArray[4]
+        passwordI.style.borderColor = 'red'
     }
     else{
         error.style.display = 'none'
+        passwordI.style.border = '2px solid green'
+        setTimeout(() => {passwordI.style.border = '1px solid #111'}, 7000)
     }
+    inputed[3] = true
 })
 
 // confirmPassword
@@ -106,16 +125,22 @@ confirmPasswordI.addEventListener('input', () => {
     if(!confirmPasswordI.value){
         error.style.display = 'block'
         error.textContent = errorArray[0]
+        confirmPasswordI.style.borderColor = 'red'
     }else if(Text1 !== Text2){
         error.style.display = 'block'
         error.textContent = errorArray[2]
+        confirmPasswordI.style.borderColor = 'red'
     }
     else{
         error.style.display = 'none'
+        confirmPasswordI.style.border = '2px solid green'
+        setTimeout(() => {confirmPasswordI.style.border = '1px solid #111'}, 7000)
     }
+    inputed[4] = true
 })
 
 let counter = 0
+let succes = 'Реєстрація успішна'
 
 sendBtn.addEventListener('click', () => {
     // name
@@ -124,18 +149,12 @@ sendBtn.addEventListener('click', () => {
         nameError.style.display = 'block'
         nameError.textContent = errorArray[0]
     }
-    else{
-        nameError.style.display = 'none'
-    }
 
     // firstName
     const firstNameError = document.getElementById('firstName__error')
     if(!firstNameI.value){
         firstNameError.style.display = 'block'
         firstNameError.textContent = errorArray[0]
-    }
-    else{
-        firstNameError.style.display = 'none'
     }
 
     // email
@@ -144,18 +163,12 @@ sendBtn.addEventListener('click', () => {
         emailError.style.display = 'block'
         emailError.textContent = errorArray[0]
     }
-    else{
-        emailError.style.display = 'none'
-    }
 
     // password
     const passwordError = document.getElementById('password__error')
     if(!passwordI.value){
         passwordError.style.display = 'block'
         passwordError.textContent = errorArray[0]
-    }
-    else{
-        passwordError.style.display = 'none'
     }
 
     // confirmPassword
@@ -164,18 +177,15 @@ sendBtn.addEventListener('click', () => {
         confirmPasswordError.style.display = 'block'
         confirmPasswordError.textContent = errorArray[0]
     }
-    else{
-        confirmPasswordError.style.display = 'none'
-    }
 
     counter++
-    if(counter > 1){
+    if(counter > 1 || !inputed.some(b => b === false)){
         const errorsIsStart = document.querySelectorAll('.group__error')
         const errorsIs = Array.from(errorsIsStart)
         let is = errorsIs.some(r => r.style.display === 'block')
-        console.log(is)
         if(!is){
             sendBtn.type = 'submit'
+            alert(succes)
         }
     }
     

@@ -27,6 +27,9 @@ function changeLang() {
     document.querySelector(`.group__${i}`).innerHTML = langArray[i][hash]
   }
   errorArray = Object.keys(errorLang).map(key => errorLang[key][hash])
+  if(hash === 'uk') succes = 'Реєстрація успішна'
+  else succes = 'Registration successful'
+  console.log(succes)
 }
 
 changeLang()
